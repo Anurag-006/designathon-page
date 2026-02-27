@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { eventNames } from "process";
 
 export default function Footer({ contactData }: { contactData?: any }) {
   return (
@@ -36,7 +37,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
           </div>
 
           <a
-            href={contactData?.registration_link || "#"}
+            href={contactData.registration_link || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto bg-blue-600/10 border border-blue-500 text-blue-400 font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-lg sm:rounded-none"

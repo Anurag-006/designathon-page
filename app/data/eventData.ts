@@ -22,7 +22,7 @@ export const hackathonData = {
         "https://unstop.com/p/vnr-design-a-thon-2026-vnr-vjiet-1648514",
       team_size_min: 1,
       team_size_max: 3,
-      registration_deadline: "2026-03-15T12:00:00",
+      registration_deadline: "2026-03-15T23:59:59",
     },
   },
   tracks: [
@@ -390,5 +390,7 @@ export const hackathonData = {
       instagram: "https://instagram.com/vnr_designathon",
       linkedin: "https://linkedin.com/in/designathon-vnrvjiet",
     },
+    registration_link:
+      "https://unstop.com/p/vnr-design-a-thon-2026-vnr-vjiet-1648514",
   },
 };
