@@ -66,7 +66,7 @@ export default function Navbar({ eventData }: NavbarProps) {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm md:text-lg font-black text-white tracking-tighter leading-none uppercase">
-                  VNR_{eventData.name || "DESIGN-A-THON"}
+                  {eventData.name || "DESIGN-A-THON"}
                 </span>
                 <span className="text-[8px] md:text-[10px] text-green-500 font-bold tracking-[0.2em] uppercase">
                   {eventData.edition || "4th Edition"} // VNRVJIET

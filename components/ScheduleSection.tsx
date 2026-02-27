@@ -38,19 +38,19 @@ export default function ScheduleSection({
 
         <div className="relative">
           {/* Main Vertical Timeline Axis */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-900 to-transparent md:-translate-x-1/2"></div>
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-900 to-transparent md:-translate-x-1/2 z-0"></div>
 
           <div className="space-y-10 md:space-y-12">
             {scheduleData.map((item, index) => (
               <div key={index}>
-                {/* DAY 2 SEPARATOR BREACH: Height Fixed */}
+                {/* DAY 2 SEPARATOR BREACH: Mobile Alignment Fixed */}
                 {item.isDayTwo && (
                   <div className="relative w-full pt-4 pb-12 flex items-center justify-start md:justify-center">
                     {/* Horizontal Divider Line */}
-                    <div className="absolute left-6 right-0 md:left-0 md:right-0 h-px bg-cyan-900/40"></div>
+                    <div className="absolute left-6 right-0 md:left-0 md:right-0 h-px bg-cyan-900/40 z-0"></div>
 
-                    {/* Day 2 Label Box */}
-                    <div className="relative z-10 bg-[#050505] px-4 md:px-10 py-2 border border-cyan-500/50 rounded-sm ml-4 md:ml-0 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
+                    {/* Day 2 Label Box - Fixed ml-14 for mobile visibility */}
+                    <div className="relative z-20 bg-[#050505] px-4 sm:px-6 md:px-10 py-2 border border-cyan-500/50 rounded-sm ml-14 md:ml-0 shadow-[0_0_15px_rgba(34,211,238,0.1)]">
                       <span className="text-xs md:text-sm font-black tracking-[0.8em] text-cyan-400 uppercase">
                         DAY_02
                       </span>
@@ -81,7 +81,7 @@ export default function ScheduleSection({
                       initial={{ opacity: 0, x: 30 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: false, margin: "-50px" }}
-                      className="bg-[#0a0a0f]/80 backdrop-blur-sm border border-[#30363d] p-5 md:bg-transparent md:border-none md:p-0 rounded-lg group-hover:border-cyan-500/50 transition-colors"
+                      className="relative z-10 bg-[#0a0a0f]/80 backdrop-blur-sm border border-[#30363d] p-5 md:bg-transparent md:border-none md:p-0 rounded-lg group-hover:border-cyan-500/50 transition-colors"
                     >
                       {/* Mobile Card Layout */}
                       <div className="md:hidden block">
