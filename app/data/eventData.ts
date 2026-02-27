@@ -18,7 +18,8 @@ export const hackathonData = {
     location: "VNRVJIET, Hyd",
     registration: {
       platform: "Unstop",
-      registration_link: "https://unstop.com/[your-new-link-here]",
+      registration_link:
+        "https://unstop.com/p/vnr-design-a-thon-2026-vnr-vjiet-1648514",
       team_size_min: 1,
       team_size_max: 3,
       registration_deadline: "2026-03-15T12:00:00",
