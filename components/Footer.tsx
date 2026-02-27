@@ -23,41 +23,25 @@ export default function Footer({ contactData }: { contactData?: any }) {
             Register Now
           </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl leading-relaxed mb-10">
-            Join us for an exciting 24-hour journey of innovation, creativity,
-            and problem-solving. Limited spots available!
+            Join the 4th Edition of VNR DESIGN-A-THON. A 24-hour national-level
+            building sprint at VNRVJIET.
           </p>
 
-          {/* Glassmorphic Unstop Logo Box */}
-          <div className="w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(0,0,0,0.5)] group hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-300">
-            {/* Direct link to Unstop's official SVG logo */}
+          <div className="w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(0,0,0,0.5)] group hover:border-blue-500/50 transition-all duration-300">
             <img
               src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/svg/unstop-logo.svg"
               alt="Unstop Logo"
               className="w-24 md:w-32 object-contain filter drop-shadow-[0_0_8px_rgba(59,130,246,0.2)] group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                // Failsafe: Shows text if the image link ever breaks
-                e.currentTarget.style.display = "none";
-                e.currentTarget.nextElementSibling?.classList.remove("hidden");
-              }}
             />
-            <span className="hidden text-2xl font-bold text-blue-500 tracking-wider">
-              unstop
-            </span>
           </div>
 
-          {/* Theme-Blended Unstop Button */}
           <a
-            // Replace '#' with your actual Unstop registration link from your eventData
             href={contactData?.registration_link || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto bg-blue-600/10 border border-blue-500 text-blue-400 font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-lg sm:rounded-none"
           >
-            {/* Terminal Corner Accents (Hidden on mobile to keep it clean) */}
-            <span className="hidden sm:block absolute -top-1 -right-1 w-2 h-2 bg-blue-500 group-hover:bg-white transition-colors"></span>
-            <span className="hidden sm:block absolute -bottom-1 -left-1 w-2 h-2 bg-blue-500 group-hover:bg-white transition-colors"></span>
             Register on Unstop
-            {/* External Link Icon that pops up on hover */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -78,7 +62,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
         </motion.div>
 
         {/* ========================================= */}
-        {/* STANDARD FOOTER DIRECTORY                 */}
+        {/* FOOTER DIRECTORY                          */}
         {/* ========================================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[#30363d] pt-12 pb-12">
           {/* Column 1: System Info */}
@@ -88,82 +72,146 @@ export default function Footer({ contactData }: { contactData?: any }) {
               SYSTEM_STATUS
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              VNR DESIGN-A-THON 2027
-              <br />A 24-Hour immersive design and innovation sprint.
+              VNR DESIGN-A-THON 2026
+              <br />
+              Organized by Department of CSE & CSBS, VNRVJIET.
             </p>
             <div className="text-xs text-gray-600 uppercase tracking-widest">
-              Location: VNR VJIET Campus
+              Location: VNRVJIET, Hyd
               <br />
               Status:{" "}
-              <span className="text-green-500">Awaiting Submissions</span>
+              <span className="text-green-500">Secure_Uplink_Active</span>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Directory */}
           <div>
             <h3 className="text-lg font-bold text-gray-300 mb-4 tracking-widest uppercase">
               // DIRECTORY
             </h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#about"
-                  className="text-gray-500 hover:text-cyan-400 transition-colors"
-                >
-                  ./about_us.sh
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#schedule"
-                  className="text-gray-500 hover:text-cyan-400 transition-colors"
-                >
-                  ./timeline.sh
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#tracks"
-                  className="text-gray-500 hover:text-cyan-400 transition-colors"
-                >
-                  ./mission_tracks.sh
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faqs"
-                  className="text-gray-500 hover:text-cyan-400 transition-colors"
-                >
-                  ./support_faqs.sh
-                </a>
-              </li>
+              {["about", "schedule", "tracks", "faqs"].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item}`}
+                    className="text-gray-500 hover:text-cyan-400 transition-colors"
+                  >
+                    ./{item}.sh
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Contact & Socials */}
+          {/* Column 3: Contacts & Socials */}
           <div>
             <h3 className="text-lg font-bold text-gray-300 mb-4 tracking-widest uppercase">
-              // PING_US
+              // UPLINK_CHANNELS
             </h3>
-            <div className="space-y-3 text-sm text-gray-500">
-              <p className="hover:text-green-400 transition-colors cursor-pointer">
-                <span className="text-gray-600 mr-2">{">"}</span>
-                {contactData?.email || "designathon@vnrvjiet.in"}
-              </p>
-              <p className="hover:text-green-400 transition-colors cursor-pointer">
-                <span className="text-gray-600 mr-2">{">"}</span>
-                {contactData?.phone || "+91 XXXXX XXXXX"}
-              </p>
+            <div className="space-y-4 text-sm">
+              {/* Email */}
+              <a
+                href={`mailto:${contactData?.email}`}
+                className="flex items-center gap-3 text-gray-500 hover:text-green-400 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                {contactData?.email || "csbsdesignathon@vnrvjiet.in"}
+              </a>
+
+              {/* Instagram */}
+              <a
+                href={contactData?.socials?.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-500 hover:text-pink-500 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                @vnr_designathon
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href={contactData?.socials?.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-500 hover:text-blue-500 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                /vnr-designathon
+              </a>
+
+              {/* Phone */}
+              <a
+                href={`tel:+916281638803`}
+                className="flex items-center gap-3 text-gray-500 hover:text-cyan-400 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                +91 63005 08083
+              </a>
             </div>
           </div>
         </div>
 
-        {/* ========================================= */}
-        {/* COPYRIGHT BAR                             */}
-        {/* ========================================= */}
-        <div className="border-t border-[#1a1a24] py-6 flex flex-col md:flex-row items-center justify-between text-xs text-gray-600 uppercase tracking-widest">
-          <p>© 2027 VNR VJIET. ALL RIGHTS RESERVED.</p>
-          <p className="mt-2 md:mt-0">END_OF_TRANSMISSION.</p>
+        {/* COPYRIGHT BAR */}
+        <div className="border-t border-[#1a1a24] py-8 flex flex-col md:flex-row items-center justify-between text-[10px] text-gray-600 uppercase tracking-[0.3em]">
+          <p>© 2026 VNR VJIET. ALL RIGHTS RESERVED.</p>
+          <p className="mt-4 md:mt-0 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            End_Of_Transmission
+          </p>
         </div>
       </div>
     </footer>

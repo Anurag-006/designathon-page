@@ -6,7 +6,8 @@ export interface ProblemStatement {
   id: number;
   title: string;
   description: string;
-  objectives?: string[];
+  requirements?: string[]; // Added for the new layout
+  outcomes?: string[]; // Added for the new layout
 }
 
 export interface Track {
@@ -94,7 +95,8 @@ export default function TrackCard({ track, index, onOpenModal }: TrackProps) {
             >
               <div className="flex flex-col overflow-hidden">
                 <span className="text-yellow-500 text-[10px] font-bold block mb-1 group-hover/btn:text-cyan-400 transition-colors">
-                  ./execute PS_0{i + 1}
+                  {/* Updated to show 1.1, 1.2 format */}
+                  ./execute PS_{index + 1}.{i + 1}
                 </span>
                 <span className="text-xs md:text-sm text-gray-200 truncate pr-2">
                   {ps.title}

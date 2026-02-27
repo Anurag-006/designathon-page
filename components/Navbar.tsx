@@ -2,115 +2,163 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
-const navLinks = [
-  { name: "ABOUT", href: "#about" }, // Added ABOUT back to the directory
-  { name: "SCHEDULE", href: "#schedule" },
-  { name: "TRACKS", href: "#tracks" },
-  { name: "SPONSORS", href: "#sponsors" },
-  { name: "FAQS", href: "#faqs" },
-];
+interface NavbarProps {
+  eventData: {
+    name: string;
+    edition?: string;
+    registration: {
+      registration_link: string;
+    };
+  };
+}
 
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+export default function Navbar({ eventData }: NavbarProps) {
+  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Detect scroll to add a stronger border/background when not at the very top
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    // SYNC: Navbar triggers after 2.4s (300ms per line * 6 lines + buffer)
+    const timer = setTimeout(() => setVisible(true), 2400);
+
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Timeline", href: "#schedule" },
+    { name: "Tracks", href: "#tracks" },
+    { name: "Sponsors", href: "#sponsors" },
+    { name: "FAQs", href: "#faqs" },
+  ];
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 font-mono transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#050505]/80 backdrop-blur-md border-b border-green-900/30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo / Terminal Prompt */}
-        <a href="#hero" className="flex items-center gap-2 group">
-          <span className="text-gray-500 group-hover:text-green-500 transition-colors">
-            ~/
-          </span>
-          <span className="text-gray-300 font-bold tracking-widest group-hover:text-white transition-colors">
-            DESIGNATHON<span className="text-green-500 animate-pulse">_</span>
-          </span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm text-gray-400 hover:text-cyan-400 tracking-widest uppercase transition-colors relative group"
-            >
-              <span className="absolute -left-3 opacity-0 group-hover:opacity-100 text-cyan-500 transition-opacity">
-                {">"}
-              </span>
-              {link.name}
-            </a>
-          ))}
-
-          {/* Main Action Button in Nav */}
-          <a
-            href="#" // <-- REPLACE THIS '#' WITH YOUR UNSTOP LINK
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-green-500/10 border border-green-500 text-green-400 text-sm font-bold uppercase tracking-widest hover:bg-green-500 hover:text-black transition-all"
-          >
-            [ EXECUTE_JOIN ]
-          </a>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-green-500 focus:outline-none font-bold"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    <AnimatePresence>
+      {visible && (
+        <motion.nav
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className={`fixed top-0 w-full z-[150] transition-all duration-300 font-mono ${
+            scrolled
+              ? "bg-[#050505]/90 backdrop-blur-xl border-b border-[#30363d] py-3"
+              : "bg-transparent py-5"
+          }`}
         >
-          {mobileMenuOpen ? "[X] CLOSE" : "[+] MENU"}
-        </button>
-      </div>
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            {/* LOGO & IDENTITY */}
+            <a href="#hero" className="flex items-center gap-3 group">
+              <div className="relative w-10 h-10 border border-green-500/30 rounded-full p-1 bg-green-500/5 group-hover:border-green-500 transition-colors shadow-[0_0_15px_rgba(34,197,94,0.1)]">
+                <Image
+                  src="/logo.png"
+                  alt="Designathon Logo"
+                  fill
+                  className="object-contain p-1"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm md:text-lg font-black text-white tracking-tighter leading-none uppercase">
+                  VNR_{eventData.name || "DESIGN-A-THON"}
+                </span>
+                <span className="text-[8px] md:text-[10px] text-green-500 font-bold tracking-[0.2em] uppercase">
+                  {eventData.edition || "4th Edition"} // VNRVJIET
+                </span>
+              </div>
+            </a>
 
-      {/* Mobile Navigation Dropdown */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-[#30363d] overflow-hidden"
-          >
-            <div className="flex flex-col p-4 space-y-4">
+            {/* DESKTOP LINKS */}
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-gray-400 hover:text-cyan-400 tracking-widest border-b border-gray-800/50 pb-2"
+                  className="text-[11px] font-bold text-gray-400 uppercase tracking-widest hover:text-green-400 transition-colors relative group"
                 >
-                  <span className="text-gray-600 mr-2">./</span>
+                  <span className="text-gray-600 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    ./
+                  </span>
                   {link.name}
                 </a>
               ))}
+
               <a
-                href="#" // <-- REPLACE THIS '#' WITH YOUR UNSTOP LINK
+                href={eventData.registration.registration_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full text-center mt-4 px-4 py-3 bg-green-500/10 border border-green-500 text-green-400 font-bold uppercase tracking-widest active:bg-green-500 active:text-black"
+                className="px-5 py-2 border border-green-500 text-green-500 text-[11px] font-black uppercase tracking-widest hover:bg-green-500 hover:text-black transition-all shadow-[0_0_15px_rgba(34,197,94,0.2)]"
               >
-                [ EXECUTE_JOIN ]
+                [ REGISTER ]
               </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+
+            {/* MOBILE MENU TOGGLE */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-gray-400 hover:text-white transition-colors"
+            >
+              <div className="space-y-1.5">
+                <div
+                  className={`w-6 h-0.5 bg-current transition-all ${
+                    mobileMenuOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <div
+                  className={`w-6 h-0.5 bg-current transition-all ${
+                    mobileMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <div
+                  className={`w-6 h-0.5 bg-current transition-all ${
+                    mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
+
+          {/* MOBILE DROPDOWN MENU */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden bg-[#0a0a0f] border-b border-[#30363d] overflow-hidden"
+              >
+                <div className="px-4 py-8 flex flex-col gap-6">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center justify-between"
+                    >
+                      {link.name}
+                      <span className="text-green-500">{">"}</span>
+                    </a>
+                  ))}
+                  <a
+                    href={eventData.registration.registration_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-4 bg-green-500 text-black text-center font-black uppercase tracking-widest text-xs"
+                  >
+                    Initiate_Registration
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.nav>
+      )}
+    </AnimatePresence>
   );
 }

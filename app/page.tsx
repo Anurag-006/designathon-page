@@ -1,23 +1,25 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection"; // <-- Import it here
+import AboutSection from "@/components/AboutSection";
 import ScheduleSection from "@/components/ScheduleSection";
 import TracksSection from "@/components/TrackSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import { hackathonData } from "@/app/data/eventData";
-
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* Passing complete event object for name, tagline, and edition */}
+      <Navbar eventData={hackathonData.event} />
+
       <main className="flex min-h-screen flex-col bg-[#050505]">
         <div id="hero">
           <HeroSection eventData={hackathonData.event} />
         </div>
 
-        {/* Add the About Section Here */}
         <div id="about">
           <AboutSection />
         </div>
@@ -30,14 +32,16 @@ export default function Home() {
           <TracksSection tracksData={hackathonData.tracks} />
         </div>
 
+        {/* FIX: Prop name changed to 'sponsors' to match our dual-node component */}
         <div id="sponsors">
-          <SponsorsSection sponsorsData={hackathonData.sponsors} />
+          <SponsorsSection sponsors={hackathonData.sponsors} />
         </div>
 
         <div id="faqs">
           <FAQSection faqsData={hackathonData.faqs} />
         </div>
 
+        {/* ADDED: coordinators data for the contact list in the footer */}
         <Footer contactData={hackathonData.contact} />
       </main>
     </>
