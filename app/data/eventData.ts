@@ -2,7 +2,7 @@
 
 export const hackathonData = {
   event: {
-    name: "DESIGNATHON",
+    name: "VNR DESIGNATHON",
     edition: "4th Edition",
     tagline: "Where Innovation Meets Design",
     host_institution:
@@ -340,7 +340,7 @@ export const hackathonData = {
     { time: "01:30 PM", event: "Lunch Break" },
     { time: "06:00 PM", event: "Mentor Review - Round 1" },
     { time: "09:00 PM", event: "Dinner" },
-    { time: "12:00 AM", event: "Midnight Coding Challenge" },
+    { time: "12:00 AM", event: "Midnight Coding Challenge", isDayTwo: true },
     { time: "08:00 AM", event: "Breakfast" },
     { time: "11:00 AM", event: "Final Submissions & Code Freeze" },
     { time: "12:30 PM", event: "Judging & Presentations" },
@@ -357,7 +357,7 @@ export const hackathonData = {
       innovation_partner: {
         name: "I&EC",
         tier: "Innovation Partner",
-        website: "https://vnrvjiet.ac.in",
+        website: "https://iecindia.org.in/",
         logo_url: "/sponsors/iec.png",
       },
     },

@@ -69,11 +69,15 @@ export default function HeroSection({ eventData }: { eventData: any }) {
   );
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#050505] overflow-hidden font-mono px-4">
+    <section className="relative min-h-screen flex flex-col items-center bg-[#050505] overflow-hidden font-mono px-4 pb-20">
+      {/* 1. THE "SWEET SPOT" SPACER 
+          20vh places the title in the upper focal point.
+          100px ensures mobile screens still clear the navbar safely. */}
+      <div className="w-full h-[max(100px,20vh)] shrink-0" />
+
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,100,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,100,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
 
-      {/* RESTORED MATRIX STUFF */}
       <AnimatePresence>
         {bootComplete && (
           <motion.div
@@ -87,7 +91,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         )}
       </AnimatePresence>
 
-      {/* GREEN INITIALIZATION TERMINAL */}
+      {/* TERMINAL BOOT */}
       <AnimatePresence>
         {!bootComplete && (
           <motion.div
@@ -119,23 +123,23 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         )}
       </AnimatePresence>
 
-      {/* MAIN CONTENT REVEAL */}
+      {/* MAIN CONTENT */}
       <motion.div
         className="relative z-20 flex flex-col items-center text-center w-full max-w-5xl"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: bootComplete ? 1 : 0, y: bootComplete ? 0 : 10 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: bootComplete ? 1 : 0 }}
         transition={{ duration: 1 }}
       >
-        <div className="mb-8 px-6 py-1 border border-white/20 bg-white/5 backdrop-blur-md rounded-full">
+        <div className="mb-8 px-6 py-2 border border-white/20 bg-white/5 backdrop-blur-md rounded-full">
           <span className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.5em]">
             4th Edition // VNRVJIET
           </span>
         </div>
 
-        {/* PRISM-CHROME TITLE */}
+        {/* NORMAL TEXT TITLE WITH CHROME GRADIENT */}
         <div className="relative mb-12 w-full flex items-center justify-center">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-            {eventData.name || "DESIGNATHON"}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-sans">
+            {eventData.name || "VNR DESIGNATHON"}
           </h1>
         </div>
 
@@ -143,7 +147,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
           {eventData.tagline}
         </p>
 
-        {/* RESTORED YELLOW PRIZE MONEY */}
+        {/* YELLOW PRIZE MONEY */}
         <div className="flex flex-col items-center justify-center mb-12">
           <span className="text-4xl sm:text-5xl md:text-7xl font-bold text-yellow-500 drop-shadow-[0_0_25px_rgba(234,179,8,0.6)]">
             {eventData.prize_pool}
@@ -153,7 +157,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
           </span>
         </div>
 
-        {/* AMBER COUNTDOWN GRID */}
+        {/* AMBER GOLD TIMER */}
         <div className="flex flex-row justify-center gap-3 sm:gap-4 md:gap-5 mb-14 w-full px-2">
           <TimeBox value={timeLeft.days} label="Days" />
           <TimeBox value={timeLeft.hours} label="Hours" />
