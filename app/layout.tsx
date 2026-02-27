@@ -1,45 +1,81 @@
-import type { Metadata, Viewport } from "next"; // Added Viewport type
-import { Space_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono",
-});
+const inter = Inter({ subsets: ["latin"] });
 
-// 1. New Viewport Export (Fixes the themeColor/viewport warnings)
-export const viewport: Viewport = {
-  themeColor: "#050505",
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-};
-
-// 2. Updated Metadata Export
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"), // Added metadataBase
-  title: "VNR DESIGN-A-THON 2026 | 24-Hour Hackathon",
+  metadataBase: new URL("https://your-temporary-url.netlify.app"), // Update this when you get a custom domain
+  title: {
+    default: "VNR DESIGNATHON 2026 | 4th Edition | VNRVJIET",
+    template: "%s | VNR DESIGNATHON 2026",
+  },
   description:
-    "24 hours of non-stop building and design at VNR VJIET. Join India's premier design-led hackathon.",
-  authors: [{ name: "Anurag Kosuri" }], //
+    "Join the 4th Edition of VNR DESIGNATHON at VNRVJIET, Hyderabad. A premier 24-hour design and innovation hackathon happening March 24-25, 2026. Initiate registration and bypass design limits.",
+  keywords: [
+    "Designathon",
+    "VNRVJIET Hackathon",
+    "VNR Vignana Jyothi",
+    "Hackathon Hyderabad",
+    "UI/UX Hackathon India",
+    "Tech Event Hyderabad 2026",
+    "VNRVJIET Events",
+    "Designathon 4th Edition",
+  ],
+  authors: [
+    { name: "Anurag Kosuri", url: "https://your-portfolio-or-github.com" },
+  ],
+  creator: "VNRVJIET",
+  publisher: "VNRVJIET",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "VNR DESIGN-A-THON 2026",
-    description: "The 24-hour sprint is on at VNR VJIET. Build. Design. Ship.",
-    images: ["/og-image.png"],
     type: "website",
+    locale: "en_IN", // Crucial for regional SEO in India
+    url: "/",
+    title: "VNR DESIGNATHON 2026 | 4th Edition | VNRVJIET",
+    description:
+      "A premier 24-hour design and innovation hackathon at VNRVJIET, Hyderabad. March 24-25, 2026. Will you accept the directive?",
+    siteName: "VNR DESIGNATHON",
+    images: [
+      {
+        url: "/og-image.jpg", // You need to create this image in your public folder!
+        width: 1200,
+        height: 630,
+        alt: "VNR DESIGNATHON 2026 - 4th Edition Mainframe",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VNR DESIGNATHON 2026 | 4th Edition",
+    description:
+      "A premier 24-hour design and innovation hackathon at VNRVJIET, Hyderabad.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${spaceMono.variable} font-mono bg-[#050505] text-gray-300 antialiased`}
+        className={`${inter.className} bg-[#050505] text-white antialiased`}
       >
         {children}
       </body>
