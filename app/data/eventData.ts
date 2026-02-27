@@ -352,7 +352,7 @@ export const hackathonData = {
         name: "QUALMINDS",
         tier: "Official Sponsor",
         website: "https://qualminds.com",
-        logo_url: "/sponsors/qualminds.png",
+        logo_url: "/sponsors/Qualminds.png",
       },
       innovation_partner: {
         name: "I&EC",

@@ -18,11 +18,183 @@
     --foreground: #ededed;
   }
 }
+@keyframes flicker {
+  0% {
+    opacity: 0.8;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  15% {
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 3s infinite;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shine {
+  animation: shine 8s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-5px, 3px);
+  }
+  40% {
+    transform: translate(-3px, -3px);
+  }
+  60% {
+    transform: translate(5px, 2px);
+  }
+  80% {
+    transform: translate(3px, -4px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(5px, -3px);
+  }
+  40% {
+    transform: translate(3px, 3px);
+  }
+  60% {
+    transform: translate(-5px, -2px);
+  }
+  80% {
+    transform: translate(-3px, 4px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes shred-v {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(500%);
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 0.15s infinite;
+}
+.animate-glitch-2 {
+  animation: glitch-2 0.15s infinite;
+}
+.animate-shred-v {
+  animation: shred-v 2s linear infinite;
+}
+
+@keyframes liquid-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes v-scan {
+  0% {
+    transform: translateY(-50px) scaleX(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(50px) scaleX(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-fast {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.animate-liquid-flow {
+  animation: liquid-flow 6s ease infinite;
+}
+.animate-v-scan {
+  animation: v-scan 3s ease-in-out infinite;
+}
+.animate-glitch-fast {
+  animation: glitch-fast 0.2s linear infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
 /* Custom Scrollbar for Terminal Data Logs */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
