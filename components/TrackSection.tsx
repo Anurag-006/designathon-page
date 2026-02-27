@@ -95,7 +95,7 @@ export default function TracksSection({ tracksData }: TracksSectionProps) {
                   URGENT: ROUND_1 SUBMISSION DEADLINE
                 </div>
                 <div className="border border-yellow-500/50 text-yellow-500 px-3 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest">
-                  MARCH 15th, 12:00 PM
+                  MARCH 15th, 23:59:59 PM
                 </div>
               </div>
             </div>
