@@ -19,7 +19,7 @@ export const hackathonData = {
     registration: {
       platform: "Unstop",
       registration_link:
-        "https://unstop.com/p/vnr-design-a-thon-2026-vnr-vjiet-1648514",
+        "https://unstop.com/hackathons/vnr-design-a-thon-2026-vallurupalli-nageswara-rao-vignana-jyothi-institute-of-engineering-technology-telangan-1648514",
       team_size_min: 1,
       team_size_max: 3,
       registration_deadline: "2026-03-15T23:59:59",
@@ -381,7 +381,7 @@ export const hackathonData = {
     {
       question: "What is the 1st round submission?",
       answer:
-        "The 1st round submission is an initial ideation and feasibility report due by March 15th at 12:00 PM.",
+        "The 1st round submission is an initial ideation and feasibility report due by March 15th at 23:59:59 PM.",
     },
   ],
   contact: {
@@ -391,6 +391,6 @@ export const hackathonData = {
       linkedin: "https://linkedin.com/in/designathon-vnrvjiet",
     },
     registration_link:
-      "https://unstop.com/p/vnr-design-a-thon-2026-vnr-vjiet-1648514",
+      "https://unstop.com/hackathons/vnr-design-a-thon-2026-vallurupalli-nageswara-rao-vignana-jyothi-institute-of-engineering-technology-telangan-1648514",
   },
 };
