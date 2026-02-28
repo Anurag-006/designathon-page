@@ -1,8 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Footer({ contactData }: { contactData?: any }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <footer className="bg-[#050505] relative overflow-hidden font-mono pt-24 border-t border-[#1a1a24]">
       {/* Background Grid */}
@@ -96,10 +99,9 @@ export default function Footer({ contactData }: { contactData?: any }) {
             />
           </div>
 
-          <a
-            href={contactData?.registration_link || "https://unstop.com"}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* CHANGED TO BUTTON TO TRIGGER MODAL */}
+          <button
+            onClick={() => setIsModalOpen(true)}
             className="group relative flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto bg-blue-600/10 border border-blue-500 text-blue-400 font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-lg sm:rounded-none"
           >
             Register on Unstop
@@ -119,7 +121,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
-          </a>
+          </button>
         </motion.div>
 
         {/* ========================================= */}
@@ -281,6 +283,106 @@ export default function Footer({ contactData }: { contactData?: any }) {
           </p>
         </div>
       </div>
+
+      {/* ========================================= */}
+      {/* REGISTRATION ADVISORY MODAL               */}
+      {/* ========================================= */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsModalOpen(false)}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 font-mono"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#0a0a0f] border border-green-500/50 shadow-[0_0_40px_rgba(34,197,94,0.15)] rounded-xl max-w-lg w-full p-6 md:p-8 relative overflow-hidden"
+            >
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent"></div>
+
+              <div className="flex items-center gap-3 mb-6 border-b border-[#1a1a24] pb-4">
+                <svg
+                  className="w-6 h-6 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <h3 className="text-lg md:text-xl font-bold text-gray-200 tracking-widest uppercase">
+                  Registration Protocol
+                </h3>
+              </div>
+
+              <div className="space-y-4 mb-8 text-sm md:text-base text-gray-400 leading-relaxed text-left">
+                <p>
+                  Please review the official fee structure before proceeding to
+                  the registration portal:
+                </p>
+                <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-lg space-y-3">
+                  <div className="flex items-start gap-3">
+                    <span className="text-green-500 mt-0.5">▸</span>
+                    <div>
+                      <span className="text-gray-200 font-bold">
+                        Phase 01 (Abstract Submission):
+                      </span>
+                      <p className="text-sm mt-1">
+                        Free of charge. All teams may submit their initial ideas
+                        without any registration fee.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-yellow-500 mt-0.5">▸</span>
+                    <div>
+                      <span className="text-gray-200 font-bold">
+                        Phase 02 (Final Execution):
+                      </span>
+                      <p className="text-sm mt-1">
+                        Teams shortlisted for the 24-hour on-campus event will
+                        be required to pay a confirmation fee of{" "}
+                        <span className="text-yellow-500 font-bold">
+                          ₹500/-
+                        </span>{" "}
+                        per team.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-1 px-4 py-3 border border-red-500/50 text-red-400 font-bold uppercase tracking-widest hover:bg-red-500/10 transition-colors rounded-lg sm:rounded-none text-xs md:text-sm"
+                >
+                  [ ABORT ]
+                </button>
+                <a
+                  href={contactData?.registration_link || "https://unstop.com"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsModalOpen(false)}
+                  className="flex-[2] text-center px-4 py-3 bg-green-500 text-black font-black uppercase tracking-widest hover:bg-green-400 transition-colors shadow-[0_0_15px_rgba(34,197,94,0.3)] rounded-lg sm:rounded-none text-xs md:text-sm"
+                >
+                  ACKNOWLEDGE & PROCEED
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
