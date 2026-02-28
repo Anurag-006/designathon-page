@@ -76,7 +76,6 @@ export default function SponsorsSection({ sponsors }: { sponsors: any }) {
                   alt={node.data.name}
                   fill
                   className="object-contain"
-                  priority
                   quality={100}
                 />
               </div>

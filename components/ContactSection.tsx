@@ -54,7 +54,8 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-purple-500/50 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] flex-1"
+              // FIXED: Added hover:shadow and increased border opacity
+              className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-purple-500/60 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex-1"
             >
               <div className="bg-[#050505] border-b border-[#30363d] px-4 py-3 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -67,7 +68,7 @@ export default function ContactSection() {
                 </span>
               </div>
               <div className="p-6 flex-1 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-4 text-purple-400">
+                <div className="flex items-center gap-3 mb-4 text-purple-400 group-hover:text-purple-300 transition-colors">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -85,8 +86,8 @@ export default function ContactSection() {
                     Head
                   </span>
                 </div>
-                <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-purple-500/30 transition-colors">
-                  <h3 className="text-lg font-bold text-gray-200 font-sans">
+                <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-purple-500/40 group-hover:bg-purple-500/[0.02] transition-all duration-300">
+                  <h3 className="text-lg font-bold text-gray-200 font-sans group-hover:text-white">
                     Dr. V Baby
                   </h3>
                   <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest">
@@ -102,7 +103,8 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-cyan-500/50 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] flex-1"
+              // FIXED: Added hover:shadow and cyan border intensity
+              className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-cyan-500/60 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] flex-1"
             >
               <div className="bg-[#050505] border-b border-[#30363d] px-4 py-3 flex items-center justify-between">
                 <div className="flex gap-2">
@@ -115,7 +117,7 @@ export default function ContactSection() {
                 </span>
               </div>
               <div className="p-6 flex-1 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-4 text-cyan-400">
+                <div className="flex items-center gap-3 mb-4 text-cyan-400 group-hover:text-cyan-300 transition-colors">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -133,8 +135,8 @@ export default function ContactSection() {
                     Convenor
                   </span>
                 </div>
-                <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-cyan-500/30 transition-colors">
-                  <h3 className="text-lg font-bold text-gray-200 font-sans">
+                <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-cyan-500/40 group-hover:bg-cyan-500/[0.02] transition-all duration-300">
+                  <h3 className="text-lg font-bold text-gray-200 font-sans group-hover:text-white">
                     Dr. S. Nagini
                   </h3>
                   <p className="text-xs text-gray-500 mt-1 uppercase tracking-widest">
@@ -153,7 +155,8 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-blue-500/50 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+            // FIXED: Changed hover:border-blue-500/50 to be more vibrant
+            className="flex flex-col bg-[#0a0a0f]/80 backdrop-blur-md border border-[#30363d] rounded-lg overflow-hidden group hover:border-blue-500/60 transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(59,130,246,0.1)]"
           >
             <div className="bg-[#050505] border-b border-[#30363d] px-4 py-3 flex items-center justify-between">
               <div className="flex gap-2">
@@ -167,7 +170,7 @@ export default function ContactSection() {
             </div>
 
             <div className="p-6 flex flex-col h-full">
-              <div className="flex items-center gap-3 mb-6 text-blue-400">
+              <div className="flex items-center gap-3 mb-6 text-blue-400 group-hover:text-blue-300 transition-colors">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -190,10 +193,10 @@ export default function ContactSection() {
                 {faculty.map((name, idx) => (
                   <div
                     key={idx}
-                    className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-blue-500/20 transition-colors flex items-center gap-3"
+                    // FIXED: Increased border opacity from /20 to /40 and added a subtle bg change on hover
+                    className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-blue-500/40 group-hover:bg-blue-500/[0.02] transition-all duration-300 flex items-center gap-3"
                   >
-                    {/* <span className="text-blue-500/50 text-xs"></span> */}
-                    <h3 className="text-sm md:text-base font-bold text-gray-300 font-sans">
+                    <h3 className="text-sm md:text-base font-bold text-gray-300 font-sans group-hover:text-white transition-colors">
                       {name}
                     </h3>
                   </div>

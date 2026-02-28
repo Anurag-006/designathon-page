@@ -18,7 +18,7 @@ export default function Navbar({ eventData }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // ADDED MODAL STATE
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // SYNC: Navbar triggers after 2.4s (300ms per line * 6 lines + buffer)
@@ -74,7 +74,7 @@ export default function Navbar({ eventData }: NavbarProps) {
     }, 300);
   };
 
-  // NEW: Handle mobile registration click
+  // Handle mobile registration click
   const handleMobileRegistrationClick = () => {
     setMobileMenuOpen(false); // Close the mobile dropdown
     setTimeout(() => {
@@ -103,27 +103,30 @@ export default function Navbar({ eventData }: NavbarProps) {
                 onClick={(e) => handleDesktopClick(e, "#hero")}
                 className="flex items-center gap-3 group"
               >
-                <div className="relative w-10 h-10 border border-green-500/30 rounded-full p-1 bg-green-500/5 group-hover:border-green-500 transition-colors shadow-[0_0_15px_rgba(34,197,94,0.1)] group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]">
+                <div className="relative w-10 h-10 border border-green-500/30 rounded-full p-1 bg-green-500/5 group-hover:border-green-500 transition-colors shadow-[0_0_15px_rgba(34,197,94,0.1)] group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] shrink-0">
                   <Image
                     src="/logo.png"
                     alt="Designathon Logo"
                     fill
                     className="object-contain p-1"
                     priority
+                    sizes="40px"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm md:text-lg font-black text-white tracking-tighter leading-none uppercase">
+                  {/* ADJUSTED: text-lg now kicks in at lg: not md: */}
+                  <span className="text-sm lg:text-lg font-black text-white tracking-tighter leading-none uppercase">
                     {eventData?.name || "DESIGN-A-THON"}
                   </span>
-                  <span className="text-[8px] md:text-[10px] text-green-500 font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-green-400 transition-colors">
+                  {/* ADJUSTED: text-[10px] now kicks in at lg: not md: */}
+                  <span className="text-[8px] lg:text-[10px] text-green-500 font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-green-400 transition-colors">
                     {eventData?.edition || "4th Edition"}
                   </span>
                 </div>
               </a>
 
-              {/* DESKTOP LINKS */}
-              <div className="hidden md:flex items-center gap-8">
+              {/* DESKTOP LINKS - FIXED: Changed hidden md:flex to hidden lg:flex */}
+              <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
@@ -131,26 +134,25 @@ export default function Navbar({ eventData }: NavbarProps) {
                     onClick={(e) => handleDesktopClick(e, link.href)}
                     className="relative group px-1 py-1"
                   >
-                    <span className="text-[11px] md:text-[12px] font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-b from-gray-200 to-gray-500 group-hover:from-white group-hover:to-green-400 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.9)]">
+                    <span className="text-[11px] xl:text-[12px] font-black uppercase tracking-widest bg-clip-text text-transparent bg-gradient-to-b from-gray-200 to-gray-500 group-hover:from-white group-hover:to-green-400 transition-all duration-300 group-hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.9)]">
                       {link.name}
                     </span>
                     <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center drop-shadow-[0_0_5px_rgba(34,197,94,1)]" />
                   </a>
                 ))}
 
-                {/* CHANGED TO BUTTON TO OPEN MODAL */}
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="px-6 py-2 border border-green-500 text-green-500 text-[11px] font-black uppercase tracking-widest hover:bg-green-500 hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] hover:-translate-y-0.5 rounded-sm ml-4"
+                  className="px-5 xl:px-6 py-2 border border-green-500 text-green-500 text-[10px] xl:text-[11px] font-black uppercase tracking-widest hover:bg-green-500 hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] hover:-translate-y-0.5 rounded-sm ml-2 xl:ml-4"
                 >
                   [ REGISTER ]
                 </button>
               </div>
 
-              {/* MOBILE MENU TOGGLE */}
+              {/* MOBILE MENU TOGGLE - FIXED: Changed md:hidden to lg:hidden */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 text-gray-400 hover:text-green-400 hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.5)] transition-all"
+                className="lg:hidden p-2 text-gray-400 hover:text-green-400 hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.5)] transition-all"
                 aria-label="Toggle Menu"
               >
                 <div className="space-y-1.5">
@@ -173,7 +175,7 @@ export default function Navbar({ eventData }: NavbarProps) {
               </button>
             </div>
 
-            {/* MOBILE DROPDOWN MENU */}
+            {/* MOBILE DROPDOWN MENU - FIXED: Changed md:hidden to lg:hidden */}
             <AnimatePresence>
               {mobileMenuOpen && (
                 <motion.div
@@ -181,7 +183,7 @@ export default function Navbar({ eventData }: NavbarProps) {
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-3xl border-b border-[#30363d] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                  className="lg:hidden bg-[#0a0a0f]/95 backdrop-blur-3xl border-b border-[#30363d] overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
                 >
                   <div className="px-6 py-4 flex flex-col">
                     {navLinks.map((link) => (
@@ -200,7 +202,6 @@ export default function Navbar({ eventData }: NavbarProps) {
                     ))}
 
                     <div className="pt-8 pb-4">
-                      {/* CHANGED: Opens modal after closing mobile menu */}
                       <button
                         onClick={handleMobileRegistrationClick}
                         className="block w-full py-4 bg-green-500 text-black text-center font-black uppercase tracking-widest text-xs rounded-sm shadow-[0_0_20px_rgba(34,197,94,0.3)] active:scale-95 transition-all"
@@ -240,7 +241,7 @@ export default function Navbar({ eventData }: NavbarProps) {
 
               <div className="flex items-center gap-3 mb-6 border-b border-[#1a1a24] pb-4">
                 <svg
-                  className="w-6 h-6 text-green-500"
+                  className="w-6 h-6 text-green-500 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -264,24 +265,24 @@ export default function Navbar({ eventData }: NavbarProps) {
                 </p>
                 <div className="bg-[#050505] border border-[#1a1a24] p-4 rounded-lg space-y-3">
                   <div className="flex items-start gap-3">
-                    <span className="text-green-500 mt-0.5">▸</span>
+                    <span className="text-green-500 mt-0.5 shrink-0">▸</span>
                     <div>
-                      <span className="text-gray-200 font-bold">
+                      <span className="text-gray-200 font-bold block mb-1">
                         Phase 01 (Abstract Submission):
                       </span>
-                      <p className="text-sm mt-1">
+                      <p className="text-sm">
                         Free of charge. All teams may submit their initial ideas
                         without any registration fee.
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-yellow-500 mt-0.5">▸</span>
+                  <div className="flex items-start gap-3 mt-4">
+                    <span className="text-yellow-500 mt-0.5 shrink-0">▸</span>
                     <div>
-                      <span className="text-gray-200 font-bold">
+                      <span className="text-gray-200 font-bold block mb-1">
                         Phase 02 (Final Execution):
                       </span>
-                      <p className="text-sm mt-1">
+                      <p className="text-sm">
                         Teams shortlisted for the 24-hour on-campus event will
                         be required to pay a confirmation fee of{" "}
                         <span className="text-yellow-500 font-bold">
