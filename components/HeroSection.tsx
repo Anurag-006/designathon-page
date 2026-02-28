@@ -145,7 +145,10 @@ export default function HeroSection({ eventData }: { eventData: any }) {
           </h1>
         </div>
 
-        <p className="text-[10px] md:text-lg text-gray-500 tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic">
+        {/* ========================================= */}
+        {/* TAGLINE WITH WORD SPACING                 */}
+        {/* ========================================= */}
+        <p className="text-[10px] md:text-lg text-gray-500 tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic [word-spacing:8px] md:[word-spacing:15px]">
           {eventData.tagline}
         </p>
 
