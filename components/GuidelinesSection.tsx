@@ -104,7 +104,10 @@ const guidelines = [
 
 export default function GuidelinesSection() {
   return (
-    <section className="py-24 bg-[#050505] relative overflow-hidden font-mono border-t border-[#1a1a1a]">
+    <section
+      id="guidelines"
+      className="py-24 bg-[#050505] relative overflow-hidden font-mono border-t border-[#1a1a1a]"
+    >
       {/* Background Grid Layer */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
 

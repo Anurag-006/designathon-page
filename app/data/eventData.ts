@@ -341,7 +341,7 @@ export const hackathonData = {
     { time: "01:30 PM", event: "Lunch Break" },
     { time: "06:00 PM", event: "Mentor Review - Round 1" },
     { time: "09:00 PM", event: "Dinner" },
-    { time: "12:00 AM", event: "Midnight Coding Challenge", isDayTwo: true },
+    { time: "12:00 AM", event: "Midnight Fun", isDayTwo: true },
     { time: "08:00 AM", event: "Breakfast" },
     { time: "11:00 AM", event: "Final Submissions & Code Freeze" },
     { time: "12:30 PM", event: "Judging & Presentations" },
