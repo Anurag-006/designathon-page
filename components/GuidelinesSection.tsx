@@ -143,9 +143,11 @@ export default function GuidelinesSection() {
                   {item.icon}
                 </div>
                 <div>
-                  <div className="text-[10px] text-gray-500 tracking-[0.3em] uppercase mb-1">
-                    {item.id}
-                  </div>
+                  {" "}
+                  {/* <div className="text-[10px] text-gray-500 tracking-[0.3em] uppercase mb-1"> */}
+                  {/*    {item.id} */}
+                  {/*   {" "} */}
+                  {/* </div> */}
                   <h3 className="text-lg font-bold text-gray-200 tracking-wider">
                     {item.title}
                   </h3>

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import MatrixRain from "./MatrixRain";
+import MatrixRain from "@/components/MatrixRain";
 
 const bootLines = [
   "INIT_SYSTEM v9.0.4...",
@@ -135,10 +135,13 @@ export default function HeroSection({ eventData }: { eventData: any }) {
           </span>
         </div>
 
-        {/* NORMAL TEXT TITLE WITH CHROME GRADIENT */}
+        {/* ========================================= */}
+        {/* BULLETPROOF FLEXBOX TITLE                 */}
+        {/* ========================================= */}
         <div className="relative mb-4 w-full flex items-center justify-center">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-sans">
-            {eventData.name || "VNR DESIGNATHON"}
+          <h1 className="flex justify-center items-center gap-4 sm:gap-8 md:gap-12 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-sans">
+            <span>VNR</span>
+            <span>DESIGNATHON</span>
           </h1>
         </div>
 
