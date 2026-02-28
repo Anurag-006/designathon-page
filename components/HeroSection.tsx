@@ -148,7 +148,8 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         {/* ========================================= */}
         {/* TAGLINE WITH WORD SPACING                 */}
         {/* ========================================= */}
-        <p className="text-[10px] md:text-lg text-gray-500 tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic [word-spacing:8px] md:[word-spacing:15px]">
+        {/* ADDED 'text-center' to ensure perfect alignment with spacing hacks */}
+        <p className="text-[10px] md:text-lg text-gray-500 text-center tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic [word-spacing:8px] md:[word-spacing:15px]">
           {eventData.tagline}
         </p>
 

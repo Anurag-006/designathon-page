@@ -10,6 +10,7 @@ import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import GuidelinesSection from "@/components/GuidelinesSection";
 import { hackathonData } from "@/app/data/eventData";
+import ContactSection from "@/components/ContactSection";
 export default function Home() {
   return (
     <>
@@ -40,6 +41,10 @@ export default function Home() {
         {/* FIX: Prop name changed to 'sponsors' to match our dual-node component */}
         <div id="sponsors">
           <SponsorsSection sponsors={hackathonData.sponsors} />
+        </div>
+
+        <div id="sponsors">
+          <ContactSection />
         </div>
 
         <div id="faqs">
