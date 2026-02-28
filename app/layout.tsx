@@ -38,14 +38,6 @@ export const metadata: Metadata = {
     description:
       "A premier 24-hour design and innovation hackathon at VNRVJIET, Hyderabad. March 24-25, 2026. Will you accept the directive?",
     siteName: "VNR DESIGNATHON",
-    images: [
-      {
-        url: "/og-image.jpg", // You need to create this image in your public folder!
-        width: 1200,
-        height: 630,
-        alt: "VNR DESIGNATHON 2026 - 4th Edition Mainframe",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",

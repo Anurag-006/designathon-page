@@ -4,7 +4,7 @@ export const hackathonData = {
   event: {
     name: "VNR DESIGNATHON",
     edition: "4th Edition",
-    tagline: "Where Innovation Meets Design",
+    tagline: "COLLABORATE SHARE BRAINSTORM SUCCEED",
     host_institution:
       "Vallurupalli Nageswara Rao Vignana Jyothi Institute of Engineering and Technology (VNRVJIET)",
     organized_by:

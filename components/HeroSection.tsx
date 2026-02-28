@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import MatrixRain from "./MatrixRain";
 
 const bootLines = [
@@ -58,7 +59,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
     value: number | string;
     label: string;
   }) => (
-    <div className="flex flex-col items-center justify-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl w-16 h-20 sm:w-24 sm:h-28 md:w-32 md:h-32 shadow-[0_0_40px_rgba(255,255,255,0.03)] shrink-0 transition-all hover:border-amber-500/50">
+    <div className="flex flex-col items-center justify-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl w-16 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 shadow-[0_0_40px_rgba(255,255,255,0.03)] shrink-0 transition-all hover:border-amber-500/50">
       <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-amber-500 tabular-nums drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
         {isMounted ? String(value).padStart(2, "0") : "--"}
       </span>
@@ -69,11 +70,9 @@ export default function HeroSection({ eventData }: { eventData: any }) {
   );
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center bg-[#050505] overflow-hidden font-mono px-4 pb-20">
-      {/* 1. THE "SWEET SPOT" SPACER 
-          20vh places the title in the upper focal point.
-          100px ensures mobile screens still clear the navbar safely. */}
-      <div className="w-full h-[max(100px,20vh)] shrink-0" />
+    <section className="relative min-h-screen flex flex-col items-center bg-[#050505] overflow-hidden font-mono px-4 pb-16">
+      {/* 1. RE-BALANCED TOP SPACER */}
+      <div className="w-full h-[max(90px,16vh)] shrink-0" />
 
       {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,100,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,100,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0" />
@@ -130,25 +129,25 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         animate={{ opacity: bootComplete ? 1 : 0 }}
         transition={{ duration: 1 }}
       >
-        <div className="mb-8 px-6 py-2 border border-white/20 bg-white/5 backdrop-blur-md rounded-full">
+        <div className="mb-4 px-6 py-2 border border-white/20 bg-white/5 backdrop-blur-md rounded-full">
           <span className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.5em]">
             4th Edition // VNRVJIET
           </span>
         </div>
 
         {/* NORMAL TEXT TITLE WITH CHROME GRADIENT */}
-        <div className="relative mb-12 w-full flex items-center justify-center">
+        <div className="relative mb-4 w-full flex items-center justify-center">
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-sans">
             {eventData.name || "VNR DESIGNATHON"}
           </h1>
         </div>
 
-        <p className="text-[10px] md:text-lg text-gray-500 tracking-[0.4em] uppercase mb-12 px-2 max-w-3xl leading-relaxed italic">
+        <p className="text-[10px] md:text-lg text-gray-500 tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic">
           {eventData.tagline}
         </p>
 
         {/* YELLOW PRIZE MONEY */}
-        <div className="flex flex-col items-center justify-center mb-12">
+        <div className="flex flex-col items-center justify-center mb-6">
           <span className="text-4xl sm:text-5xl md:text-7xl font-bold text-yellow-500 drop-shadow-[0_0_25px_rgba(234,179,8,0.6)]">
             {eventData.prize_pool}
           </span>
@@ -158,11 +157,37 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         </div>
 
         {/* AMBER GOLD TIMER */}
-        <div className="flex flex-row justify-center gap-3 sm:gap-4 md:gap-5 mb-14 w-full px-2">
+        <div className="flex flex-row justify-center gap-3 sm:gap-4 md:gap-5 mb-6 w-full px-2">
           <TimeBox value={timeLeft.days} label="Days" />
           <TimeBox value={timeLeft.hours} label="Hours" />
           <TimeBox value={timeLeft.minutes} label="Minutes" />
           <TimeBox value={timeLeft.seconds} label="Seconds" />
+        </div>
+
+        {/* HOSTED BY SECTION */}
+        <div className="flex flex-col items-center justify-center mb-8">
+          <div className="flex items-center gap-4 mb-3">
+            <span className="w-8 h-px bg-gray-800"></span>
+            <span className="text-[10px] text-gray-500 uppercase tracking-[0.4em]">
+              Hosted_By
+            </span>
+            <span className="w-8 h-px bg-gray-800"></span>
+          </div>
+
+          {/* CLICKABLE LOGO */}
+          <a
+            href="https://vnrvjiet.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative w-40 h-14 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+          >
+            <Image
+              src="/vnr-logo.png"
+              alt="VNRVJIET Logo"
+              fill
+              className="object-contain"
+            />
+          </a>
         </div>
 
         {/* ACTION BUTTONS */}

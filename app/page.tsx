@@ -8,6 +8,7 @@ import TracksSection from "@/components/TrackSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import GuidelinesSection from "@/components/GuidelinesSection";
 import { hackathonData } from "@/app/data/eventData";
 export default function Home() {
   return (
@@ -26,6 +27,10 @@ export default function Home() {
 
         <div id="schedule">
           <ScheduleSection scheduleData={hackathonData.schedule} />
+        </div>
+
+        <div id="guidelines">
+          <GuidelinesSection />
         </div>
 
         <div id="tracks">

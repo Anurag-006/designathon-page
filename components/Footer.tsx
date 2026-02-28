@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { eventNames } from "process";
 
 export default function Footer({ contactData }: { contactData?: any }) {
   return (
@@ -11,13 +10,62 @@ export default function Footer({ contactData }: { contactData?: any }) {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* ========================================= */}
-        {/* UNSTOP REGISTRATION CALL-TO-ACTION AREA   */}
+        {/* COLLABORATORS AREA                        */}
         {/* ========================================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-20 border-b border-[#1a1a24] pb-20"
+        >
+          <div className="flex items-center gap-4 mb-12">
+            <span className="w-12 h-px bg-gray-800"></span>
+            <h3 className="text-xs md:text-sm font-bold text-gray-500 tracking-[0.4em] uppercase">
+              Authorized_Collaborators
+            </h3>
+            <span className="w-12 h-px bg-gray-800"></span>
+          </div>
+
+          <div className="flex flex-row flex-wrap items-center justify-center gap-12 md:gap-24">
+            {/* ISI Logo Card */}
+            <div className="flex flex-col items-center group">
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
+                <img
+                  src="/isi-logo.png"
+                  alt="ISI Logo"
+                  className="w-16 md:w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <span className="text-[10px] text-gray-600 tracking-[0.2em] uppercase group-hover:text-cyan-400 transition-colors">
+                ISI Chapter
+              </span>
+            </div>
+
+            {/* CSI Logo Card */}
+            <div className="flex flex-col items-center group">
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
+                <img
+                  src="/csi-logo.png"
+                  alt="CSI Logo"
+                  className="w-16 md:w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <span className="text-[10px] text-gray-600 tracking-[0.2em] uppercase group-hover:text-cyan-400 transition-colors">
+                CSI Chapter
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ========================================= */}
+        {/* UNSTOP REGISTRATION CALL-TO-ACTION AREA   */}
+        {/* ========================================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col items-center text-center mb-24"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-gray-200 mb-4 tracking-tight">
@@ -37,7 +85,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
           </div>
 
           <a
-            href={contactData.registration_link || "#"}
+            href={contactData?.registration_link || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto bg-blue-600/10 border border-blue-500 text-blue-400 font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-lg sm:rounded-none"
