@@ -33,10 +33,12 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="mb-16 border-b border-[#30363d] pb-6 text-center md:text-left"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500 inline-block">
-            <span className="text-gray-600 mr-2">~/</span>COMMAND_DIRECTORY
+          {/* FIXED: Adjusted responsive text sizes (text-2xl -> sm:text-3xl -> md:text-4xl -> lg:text-5xl) and added tracking-tight for mobile */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight md:tracking-normal font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500 inline-block">
+            <span className="text-gray-600 mr-1 md:mr-2">~/</span>
+            COMMAND_DIRECTORY
           </h2>
-          <p className="text-gray-500 font-mono text-xs md:text-sm mt-2 uppercase tracking-[0.2em]">
+          <p className="text-gray-500 font-mono text-xs md:text-sm mt-3 uppercase tracking-[0.2em] px-2 md:px-0">
             System Administrators and Event Coordinators
           </p>
         </motion.div>

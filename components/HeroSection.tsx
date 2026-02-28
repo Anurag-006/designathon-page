@@ -131,7 +131,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
       >
         <div className="mb-4 px-6 py-2 border border-white/20 bg-white/5 backdrop-blur-md rounded-full">
           <span className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.5em]">
-            4th Edition // VNRVJIET
+            4th Edition
           </span>
         </div>
 
@@ -148,7 +148,6 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         {/* ========================================= */}
         {/* TAGLINE WITH WORD SPACING                 */}
         {/* ========================================= */}
-        {/* ADDED 'text-center' to ensure perfect alignment with spacing hacks */}
         <p className="text-[10px] md:text-lg text-gray-500 text-center tracking-[0.4em] uppercase mb-6 px-2 max-w-3xl leading-relaxed italic [word-spacing:8px] md:[word-spacing:15px]">
           {eventData.tagline}
         </p>
@@ -173,7 +172,7 @@ export default function HeroSection({ eventData }: { eventData: any }) {
 
         {/* HOSTED BY SECTION */}
         <div className="flex flex-col items-center justify-center mb-8">
-          <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center gap-4 mb-4">
             <span className="w-8 h-px bg-gray-800"></span>
             <span className="text-[10px] text-gray-500 uppercase tracking-[0.4em]">
               Hosted_By
@@ -181,19 +180,25 @@ export default function HeroSection({ eventData }: { eventData: any }) {
             <span className="w-8 h-px bg-gray-800"></span>
           </div>
 
-          {/* CLICKABLE LOGO */}
+          {/* CLICKABLE LOGO AND DEPARTMENT TEXT */}
           <a
             href="https://vnrvjiet.ac.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-40 h-14 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer"
+            className="flex flex-col items-center gap-3 opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-pointer group"
           >
-            <Image
-              src="/vnr-logo.png"
-              alt="VNRVJIET Logo"
-              fill
-              className="object-contain"
-            />
+            <div className="relative w-40 h-14">
+              <Image
+                src="/vnr-logo.png"
+                alt="VNRVJIET Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            {/* Removed group-hover:text-cyan-400 from here */}
+            <span className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-[0.3em] transition-colors">
+              Department of CSE & CSBS
+            </span>
           </a>
         </div>
 
