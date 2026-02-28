@@ -136,10 +136,13 @@ export default function HeroSection({ eventData }: { eventData: any }) {
         </div>
 
         {/* ========================================= */}
-        {/* BULLETPROOF FLEXBOX TITLE                 */}
+        {/* CROSS-BROWSER SAFE GLOWING TITLE          */}
         {/* ========================================= */}
         <div className="relative mb-4 w-full flex items-center justify-center">
-          <h1 className="flex justify-center items-center gap-4 sm:gap-8 md:gap-12 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] font-sans">
+          {/* SAFE GLOW: Placed strictly behind the text. Fixes Brave/Safari black artifact bug */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] bg-white/15 blur-[40px] rounded-[100%] pointer-events-none"></div>
+
+          <h1 className="relative z-10 flex justify-center items-center gap-4 sm:gap-8 md:gap-12 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[-0.05em] uppercase leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 font-sans">
             <span>VNR</span>
             <span>DESIGNATHON</span>
           </h1>
@@ -195,7 +198,6 @@ export default function HeroSection({ eventData }: { eventData: any }) {
                 className="object-contain"
               />
             </div>
-            {/* Removed group-hover:text-cyan-400 from here */}
             <span className="text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-[0.3em] transition-colors">
               Department of CSE & CSBS
             </span>

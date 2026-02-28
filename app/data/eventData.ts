@@ -371,7 +371,8 @@ export const hackathonData = {
     },
     {
       question: "Is there a registration fee?",
-      answer: "No, participation in Designathon 2026 is free of cost.",
+      answer:
+        "Participation in the first round of Designathon 2026 is free of charge. However, teams that qualify for the second round will be required to pay a registration fee of 500.",
     },
     {
       question: "Can we form cross-college teams?",

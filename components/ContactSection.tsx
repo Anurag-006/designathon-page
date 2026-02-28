@@ -192,7 +192,7 @@ export default function ContactSection() {
                     key={idx}
                     className="bg-[#050505] border border-[#1a1a24] p-4 rounded-md group-hover:border-blue-500/20 transition-colors flex items-center gap-3"
                   >
-                    <span className="text-blue-500/50 text-xs">{`0${idx + 1}`}</span>
+                    {/* <span className="text-blue-500/50 text-xs"></span> */}
                     <h3 className="text-sm md:text-base font-bold text-gray-300 font-sans">
                       {name}
                     </h3>
