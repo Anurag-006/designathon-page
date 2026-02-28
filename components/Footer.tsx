@@ -28,28 +28,40 @@ export default function Footer({ contactData }: { contactData?: any }) {
           </div>
 
           <div className="flex flex-row flex-wrap items-center justify-center gap-12 md:gap-24">
-            {/* ISI Logo Card */}
+            {/* IIC Logo Card */}
             <div className="flex flex-col items-center group">
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
-                <img
-                  src="/isi-logo.png"
-                  alt="ISI Logo"
-                  className="w-16 md:w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
+                <a
+                  href="https://iic.mic.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/iic-logo.png"
+                    alt="IIC Logo"
+                    className="w-24 md:w-28 object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </a>
               </div>
               <span className="text-[10px] text-gray-600 tracking-[0.2em] uppercase group-hover:text-cyan-400 transition-colors">
-                ISI Chapter
+                IIC Chapter
               </span>
             </div>
 
             {/* CSI Logo Card */}
             <div className="flex flex-col items-center group">
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
-                <img
-                  src="/csi-logo.png"
-                  alt="CSI Logo"
-                  className="w-16 md:w-20 object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-[#0a0a0f]/50 backdrop-blur-sm border border-[#30363d] rounded-xl flex items-center justify-center mb-4 group-hover:border-cyan-500/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300">
+                <a
+                  href="https://www.csi-india.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="/csi-logo.png"
+                    alt="CSI Logo"
+                    className="w-24 md:w-28 object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </a>
               </div>
               <span className="text-[10px] text-gray-600 tracking-[0.2em] uppercase group-hover:text-cyan-400 transition-colors">
                 CSI Chapter
@@ -85,7 +97,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
           </div>
 
           <a
-            href={contactData?.registration_link || "#"}
+            href={contactData?.registration_link || "https://unstop.com"}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto bg-blue-600/10 border border-blue-500 text-blue-400 font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-lg sm:rounded-none"
@@ -160,7 +172,7 @@ export default function Footer({ contactData }: { contactData?: any }) {
             <div className="space-y-4 text-sm">
               {/* Email */}
               <a
-                href={`mailto:${contactData?.email}`}
+                href={`mailto:${contactData?.email || "csbsdesignathon@vnrvjiet.in"}`}
                 className="flex items-center gap-3 text-gray-500 hover:text-green-400 transition-colors"
               >
                 <svg
@@ -182,7 +194,10 @@ export default function Footer({ contactData }: { contactData?: any }) {
 
               {/* Instagram */}
               <a
-                href={contactData?.socials?.instagram}
+                href={
+                  contactData?.socials?.instagram ||
+                  "https://www.instagram.com/vnr_designathon"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-500 hover:text-pink-500 transition-colors"
@@ -207,7 +222,10 @@ export default function Footer({ contactData }: { contactData?: any }) {
 
               {/* LinkedIn */}
               <a
-                href={contactData?.socials?.linkedin}
+                href={
+                  contactData?.socials?.linkedin ||
+                  "https://www.linkedin.com/company/vnr-designathon"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-gray-500 hover:text-blue-500 transition-colors"
