@@ -71,7 +71,7 @@ const guidelines = [
       </svg>
     ),
     points: [
-      "Shortlist Announcement: March 19th, 2026.",
+      "Shortlist Announcement: March 21st, 2026.",
       "Confirmation Fee: INR 500/- required for shortlisted teams.",
       "Mandatory 24-hour on-campus stay during the event.",
     ],
